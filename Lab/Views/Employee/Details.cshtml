@@ -1,0 +1,31 @@
+﻿@using Lab.Models
+@model Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style>
+        #container {
+            width: 60%;
+            margin: 10% 20%;
+            font-size: large;
+            color: darkorange;
+        }
+
+        p{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1> Employee Details</h1>
+        <p>
+            @Html.DisplayForModel()
+        </p>
+    </div>
+</body>
+</html>

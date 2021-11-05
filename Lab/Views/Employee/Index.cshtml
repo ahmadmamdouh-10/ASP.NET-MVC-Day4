@@ -1,0 +1,79 @@
+﻿
+@using Lab.Models
+@model List<Employee>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <style>
+        #container {
+            width: 60%;
+            margin: 150px auto 0 auto;
+        }
+
+        .header {
+            background-color: saddlebrown;
+        }
+
+        .rowbc {
+            background-color: antiquewhite ;
+        }
+
+        .rowalt {
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>List Of Employees</h1>
+
+        <h3> Logged-In UserName : @ViewBag.SelectedUserName</h3>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2 header">ID</div>
+                <div class="col-3 header">Name</div>
+                <div class="col-2 header">Gender</div>
+                <div class="col-3 header">HiringDate</div>
+                <div class="col-2 header">Details</div>
+            </div>
+            @{ bool AltRaw = false;}
+            @foreach (Employee E in Model)
+            {
+                if (AltRaw == false)
+                {
+                    <div class="row rowbc">
+                        <div class="col-2">@E.ID</div>
+                        <div class="col-3">@E.Name</div>
+                        <div class="col-2">@E.Gender</div>
+                        <div class="col-3">@E.HiringDate</div>
+                        <div class="col-2">@Html.ActionLink("Details", "Details", new { id = E.ID })</div>
+                    </div>
+                    AltRaw = true;
+                }
+                else
+                {
+                    <div class="row rowalt">
+                        <div class="col-2">@E.ID</div>
+                        <div class="col-3">@E.Name</div>
+                        <div class="col-2">@E.Gender</div>
+                        <div class="col-3">@E.HiringDate</div>
+                        <div class="col-2">@Html.ActionLink("Details", "Details", new { id = E.ID })</div>
+                    </div>
+                    AltRaw = false;
+                }
+            }
+        </div>
+        <br />
+        <br />
+        @Html.ActionLink("Create", "Create", null,
+              new { @class = "btn btn-danger" })
+    </div>
+</body>
+</html>
